@@ -1,0 +1,269 @@
+/* 기본 설정 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #ffffff;
+  background-color: #2a3d55; /* 어두운 배경색 */
+}
+
+/* 첫 페이지 */
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #2a3d55;
+  position: relative;
+}
+
+.title-container {
+  text-align: center;
+  max-width: 600px;
+  padding: 1rem;
+}
+
+.main-title {
+  font-size: 3rem;
+  color: #ffffff;
+}
+
+.subtitle {
+  color: #dddddd;
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+}
+
+/* 도형 스타일 */
+.circle-shape, .square-shape, .triangle-shape, .star-shape {
+  position: absolute;
+  background-color: #c1d5e0; /* 도형 색상 */
+  opacity: 0.7; /* 반투명도 조정 */
+  animation: float 5s infinite ease-in-out;
+  z-index: 0; /* z-index를 0으로 설정하여 배경으로 유지 */
+}
+
+.circle-shape {
+  width: 150px; /* 크기 증가 */
+  height: 150px; /* 크기 증가 */
+  top: 10%; /* 위치 조정 */
+  left: 5%;
+  border-radius: 50%;
+  animation-delay: 0.2s;
+}
+
+.square-shape {
+  width: 150px; /* 크기 증가 */
+  height: 150px; /* 크기 증가 */
+  top: 20%; /* 위치 조정 */
+  right: 5%;
+  animation-delay: 0.4s;
+}
+
+.triangle-shape {
+  width: 0;
+  height: 0;
+  border-left: 75px solid transparent; /* 크기 증가 */
+  border-right: 75px solid transparent; /* 크기 증가 */
+  border-bottom: 150px solid #c1d5e0; /* 도형 색상 */
+  bottom: 25%;
+  left: 20%;
+  animation-delay: 0.6s;
+}
+
+.star-shape {
+  width: 100px; /* 크기 증가 */
+  height: 100px; /* 크기 증가 */
+  top: 30%;
+  right: 20%;
+  background-color: #c1d5e0; /* 도형 색상 */
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  animation-delay: 0.8s;
+}
+
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px); /* 플로팅 효과 줄이기 */
+  }
+}
+
+/* 제작자 정보 스타일 */
+.footer {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: #c1d5e0;
+  font-size: 0.9rem;
+}
+
+.footer p {
+  margin: 0;
+}
+
+/* 목차 페이지 */
+.contents {
+  background-color: #f0f4f8; /* 밝은 배경색 추가 */
+  padding: 2rem;
+  color: #2a3d55;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; /* 수직 정렬 */
+  align-items: center; /* 중앙 정렬 */
+  position: relative; /* 자식 요소의 절대 위치를 기준으로 설정 */
+  width: 100%; /* 넉넉한 너비 설정 */
+  z-index: 1; /* z-index를 1로 설정하여 도형 위에 위치 */
+}
+
+/* 제목 스타일 */
+.contents h2 {
+  color: #2a3d55;
+  margin-bottom: 2rem;
+  text-align: center; /* 제목 중앙 정렬 */
+  width: 100%; /* 제목을 페이지 너비에 맞춤 */
+  font-size: 2.5rem; /* 글씨 크기 증가 */
+}
+
+/* 카드 컨테이너 */
+.card-container {
+  display: flex;
+  flex-direction: column; /* 수직 정렬 */
+  align-items: center; /* 중앙 정렬 */
+  width: 100%; /* 너비를 100%로 설정 */
+  max-width: 800px; /* 최대 너비를 설정하여 중앙에 위치하도록 함 */
+}
+
+/* 카드 리스트 */
+.card-list {
+  display: flex;
+  flex-direction: column; /* 수직 정렬 */
+  align-items: flex-start; /* 왼쪽 정렬 */
+  gap: 30px; /* 카드 사이의 간격 증가 */
+  width: 100%; /* 카드 리스트 너비 설정 */
+}
+
+/* 목차 항목 스타일 */
+.contents ul {
+  list-style: none;
+  margin-top: 1rem;
+  padding: 0;
+}
+
+.contents ul li {
+  background-color: #ffffff; /* 카드 배경색 */
+  border-radius: 8px; /* 모서리 둥글게 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+  padding: 20px 25px; /* 카드 안쪽 여백 */
+  width: 100%; /* 카드 너비 조정 */
+  margin-bottom: 20px; /* 목록 항목 간의 간격 증가 */
+  font-size: 1.5rem; /* 글씨 크기 증가 */
+  transition: transform 0.2s; /* 부드러운 효과 추가 */
+}
+
+.contents ul li:hover {
+  transform: translateY(-5px); /* 마우스 오버 시 약간 위로 이동 */
+}
+
+.contents ul li a {
+  text-decoration: none; /* 링크의 밑줄 제거 */
+  color: #2a3d55; /* 링크 색상 */
+  font-weight: bold; /* 링크 글자 두껍게 */
+}
+
+/* 추가 디자인 요소 */
+.design-element {
+  position: absolute;
+  opacity: 0.3; /* 반투명도 */
+}
+
+.design-element.circle {
+  width: 300px; /* 크기 조정 */
+  height: 300px; /* 크기 조정 */
+  border-radius: 50%; /* 둥근 모양 */
+  top: 10%; /* 상단 위치 조정 */
+  left: 5%; /* 왼쪽 위치 조정 */
+  background-color: rgba(40, 60, 80, 0.1); /* 배경색 추가 */
+  z-index: -2; /* z-index를 낮춰서 가장 뒤쪽에 배치 */
+}
+
+.design-element.square {
+  width: 250px; /* 크기 조정 */
+  height: 250px; /* 크기 조정 */
+  top: 60%; /* 위치 조정 */
+  right: 15%; /* 오른쪽 위치 조정 */
+  background-color: rgba(40, 60, 80, 0.2); /* 배경색 추가 */
+  z-index: -1; /* z-index를 낮춰서 뒤쪽에 배치 */
+}
+
+.design-element.triangle {
+  width: 0;
+  height: 0;
+  border-left: 125px solid transparent; /* 왼쪽 경계 */
+  border-right: 125px solid transparent; /* 오른쪽 경계 */
+  border-bottom: 125px solid rgba(40, 60, 80, 0.5); /* 반투명한 세모 */
+  position: absolute;
+  top: 45%; /* 위치 조정 (중앙으로 이동) */
+  left: 30%; /* 위치 조정 (왼쪽으로 이동) */
+  z-index: -1; /* z-index를 -1로 설정하여 네모 위로 위치 조정 */
+}
+
+
+.content {
+  padding: 2rem;
+  min-height: 100vh; /* 페이지 높이 */
+  background-color: #ffffff; /* 내용 페이지 배경색 */
+  color: #333; /* 내용 글자색 */
+}
+
+.content h2 {
+  margin-bottom: 1rem;
+  color: #2a3d55;
+}
+
+.content p {
+  margin-bottom: 1rem;
+}
+
+
+
+/*본문 페이지*/
+.content .main {
+  display: flex;
+  height: 100vh;
+}
+.content .main .half {
+  width: 50%; /* 각 half의 너비를 50%로 설정 */
+  padding: 1rem; /* 안쪽 여백 추가 */
+}
+
+.content .main .half:nth-child(2) {
+  background-color: #f5f5f5; /* 클래식한 연한 회색 */
+  padding: 1rem; /* 안쪽 여백 추가 */
+  margin-left: 20px; /* 첫 번째 자식과의 간격을 늘리기 위한 왼쪽 여백 추가 */
+}
+
+/* 홀수는 왼쪽에 설명, 오른쪽은 빈 공간 */
+.content.main:nth-child(odd) .half:first-child {
+  order: 1; /* 설명을 왼쪽에 배치 */
+}
+
+.content.main:nth-child(odd) .half:last-child {
+  order: 2; /* 빈 공간을 오른쪽에 배치 */
+}
+
+/* 짝수는 왼쪽은 빈 공간, 오른쪽은 설명 */
+.content.main:nth-child(even) .half:first-child {
+  order: 2; /* 빈 공간을 왼쪽에 배치 */
+}
+
+.content.main:nth-child(even) .half:last-child {
+  order: 1; /* 설명을 오른쪽에 배치 */
+}
