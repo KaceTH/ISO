@@ -3,12 +3,26 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  line-height:150%;
+}
+
+@font-face {
+  font-family: 'Chosunilbo_myungjo';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: Chosunilbo_myungjo, sans-serif;
   color: #ffffff;
   background-color: #2a3d55; /* 어두운 배경색 */
+  scroll-behavior: smooth;
+}
+
+section {
+  height: 100vh;
+  overflow: auto;
 }
 
 /* 첫 페이지 */
@@ -24,8 +38,9 @@ body {
 
 .title-container {
   text-align: center;
-  max-width: 600px;
+  max-width: 650px;
   padding: 1rem;
+  z-index: 4;
 }
 
 .main-title {
@@ -34,23 +49,23 @@ body {
 }
 
 .subtitle {
-  color: #dddddd;
+  color: #ddddddbb;
   margin-top: 0.5rem;
   font-size: 1.2rem;
 }
 
 /* 도형 스타일 */
-.circle-shape, .square-shape, .triangle-shape, .star-shape {
+.circle-shape, .square-shape, .star-shape {
   position: absolute;
   background-color: #c1d5e0; /* 도형 색상 */
   opacity: 0.7; /* 반투명도 조정 */
   animation: float 5s infinite ease-in-out;
-  z-index: 0; /* z-index를 0으로 설정하여 배경으로 유지 */
+  z-index: -1; /* z-index를 0으로 설정하여 배경으로 유지 */
 }
 
 .circle-shape {
-  width: 150px; /* 크기 증가 */
-  height: 150px; /* 크기 증가 */
+  width: 15vh; /* 크기 증가 */
+  height: 15vh; /* 크기 증가 */
   top: 10%; /* 위치 조정 */
   left: 5%;
   border-radius: 50%;
@@ -58,28 +73,32 @@ body {
 }
 
 .square-shape {
-  width: 150px; /* 크기 증가 */
-  height: 150px; /* 크기 증가 */
-  top: 20%; /* 위치 조정 */
+  width: 15vh; /* 크기 증가 */
+  height: 15vh; /* 크기 증가 */
+  top: 10%; /* 위치 조정 */
   right: 5%;
   animation-delay: 0.4s;
 }
 
 .triangle-shape {
+  position: absolute;
+  opacity: 0.7; /* 반투명도 조정 */
+  animation: float 5s infinite ease-in-out;
+  z-index: 0; /* z-index를 0으로 설정하여 배경으로 유지 */
   width: 0;
   height: 0;
-  border-left: 75px solid transparent; /* 크기 증가 */
-  border-right: 75px solid transparent; /* 크기 증가 */
-  border-bottom: 150px solid #c1d5e0; /* 도형 색상 */
+  border-left: 10vh solid transparent; /* 크기 증가 */
+  border-right: 10vh solid transparent; /* 크기 증가 */
+  border-bottom: 16vh solid #c1d5e0; /* 도형 색상 */
   bottom: 25%;
   left: 20%;
   animation-delay: 0.6s;
 }
 
 .star-shape {
-  width: 100px; /* 크기 증가 */
-  height: 100px; /* 크기 증가 */
-  top: 30%;
+  width: 15vh; /* 크기 증가 */
+  height: 15vh; /* 크기 증가 */
+  top: 65%;
   right: 20%;
   background-color: #c1d5e0; /* 도형 색상 */
   clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
@@ -112,42 +131,39 @@ body {
 /* 목차 페이지 */
 .contents {
   background-color: #f0f4f8; /* 밝은 배경색 추가 */
-  padding: 2rem;
   color: #2a3d55;
-  min-height: 100vh;
+  min-height: calc(100vh - 2rem);
   display: flex;
   flex-direction: column; /* 수직 정렬 */
   align-items: center; /* 중앙 정렬 */
   position: relative; /* 자식 요소의 절대 위치를 기준으로 설정 */
   width: 100%; /* 넉넉한 너비 설정 */
   z-index: 1; /* z-index를 1로 설정하여 도형 위에 위치 */
+  max-height: 100%;
 }
 
 /* 제목 스타일 */
 .contents h2 {
   color: #2a3d55;
+  margin-top: 2rem;
   margin-bottom: 2rem;
   text-align: center; /* 제목 중앙 정렬 */
   width: 100%; /* 제목을 페이지 너비에 맞춤 */
-  font-size: 2.5rem; /* 글씨 크기 증가 */
+  font-size: 2rem; /* 글씨 크기 증가 */
 }
 
 /* 카드 컨테이너 */
 .card-container {
-  display: flex;
-  flex-direction: column; /* 수직 정렬 */
-  align-items: center; /* 중앙 정렬 */
-  width: 100%; /* 너비를 100%로 설정 */
-  max-width: 800px; /* 최대 너비를 설정하여 중앙에 위치하도록 함 */
+  height: 100px;
+  width: 100%;
+  flex-grow: 1;
 }
 
 /* 카드 리스트 */
 .card-list {
+  height: 100%;
   display: flex;
-  flex-direction: column; /* 수직 정렬 */
-  align-items: flex-start; /* 왼쪽 정렬 */
-  gap: 30px; /* 카드 사이의 간격 증가 */
-  width: 100%; /* 카드 리스트 너비 설정 */
+  justify-content: center;
 }
 
 /* 목차 항목 스타일 */
@@ -155,6 +171,13 @@ body {
   list-style: none;
   margin-top: 1rem;
   padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  flex-grow: 1;
+  max-height: 100%;
+  max-width: 800px;
 }
 
 .contents ul li {
@@ -162,20 +185,33 @@ body {
   border-radius: 8px; /* 모서리 둥글게 */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
   padding: 20px 25px; /* 카드 안쪽 여백 */
-  width: 100%; /* 카드 너비 조정 */
+  width: auto; /* 카드 너비 조정 */
   margin-bottom: 20px; /* 목록 항목 간의 간격 증가 */
-  font-size: 1.5rem; /* 글씨 크기 증가 */
+  margin-right: 20px; /* 목록 항목 간의 간격 증가 */
   transition: transform 0.2s; /* 부드러운 효과 추가 */
+  display: flex;
+  flex-direction: column; /*카드 요소별 COLUMN정렬*/
+  flex-wrap: initial;
 }
 
-.contents ul li:hover {
+.contents ul li:hover, .contents ul li:active {
   transform: translateY(-5px); /* 마우스 오버 시 약간 위로 이동 */
 }
 
-.contents ul li a {
-  text-decoration: none; /* 링크의 밑줄 제거 */
-  color: #2a3d55; /* 링크 색상 */
+.contents ul li input {
+  font-family: 'Chosunilbo_myungjo';
+  background: none;
+  border: none;
+  color: #2a3d55; /* 글씨 색상 */
+  font-size: 1.2rem; /* 글씨 크기 증가 */
   font-weight: bold; /* 링크 글자 두껍게 */
+  text-align: left; /*글씨 왼쪽 정렬*/
+  width: 100%; /*여백 채움*/
+}
+
+.contents ul li label {
+  color: #6f8096; /* 글씨 색상 */
+  line-height:100%;
 }
 
 /* 추가 디자인 요소 */
@@ -185,8 +221,8 @@ body {
 }
 
 .design-element.circle {
-  width: 300px; /* 크기 조정 */
-  height: 300px; /* 크기 조정 */
+  width: 30vw; /* 크기 조정 */
+  height: 30vw; /* 크기 조정 */
   border-radius: 50%; /* 둥근 모양 */
   top: 10%; /* 상단 위치 조정 */
   left: 5%; /* 왼쪽 위치 조정 */
@@ -195,9 +231,9 @@ body {
 }
 
 .design-element.square {
-  width: 250px; /* 크기 조정 */
-  height: 250px; /* 크기 조정 */
-  top: 60%; /* 위치 조정 */
+  width: 25vw; /* 크기 조정 */
+  height: 25vw; /* 크기 조정 */
+  top: 40%; /* 위치 조정 */
   right: 15%; /* 오른쪽 위치 조정 */
   background-color: rgba(40, 60, 80, 0.2); /* 배경색 추가 */
   z-index: -1; /* z-index를 낮춰서 뒤쪽에 배치 */
@@ -206,9 +242,9 @@ body {
 .design-element.triangle {
   width: 0;
   height: 0;
-  border-left: 125px solid transparent; /* 왼쪽 경계 */
-  border-right: 125px solid transparent; /* 오른쪽 경계 */
-  border-bottom: 125px solid rgba(40, 60, 80, 0.5); /* 반투명한 세모 */
+  border-left: 12vw solid transparent; /* 왼쪽 경계 */
+  border-right: 12vw solid transparent; /* 오른쪽 경계 */
+  border-bottom: 12vw solid rgba(40, 60, 80, 0.5); /* 반투명한 세모 */
   position: absolute;
   top: 45%; /* 위치 조정 (중앙으로 이동) */
   left: 30%; /* 위치 조정 (왼쪽으로 이동) */
@@ -218,9 +254,11 @@ body {
 
 .content {
   padding: 2rem;
-  min-height: 100vh; /* 페이지 높이 */
+  min-height: calc(100vh - 2rem); /* 페이지 높이 */
   background-color: #ffffff; /* 내용 페이지 배경색 */
   color: #333; /* 내용 글자색 */
+  display: flex;
+  flex-direction: column;
 }
 
 .content h2 {
@@ -237,11 +275,14 @@ body {
 /*본문 페이지*/
 .content .main {
   display: flex;
-  height: 100vh;
+  height: max-content;
+  flex-grow: 1;
 }
 .content .main .half {
-  width: 50%; /* 각 half의 너비를 50%로 설정 */
+  max-width: 50%; /* 각 half의 너비를 50%로 설정 */
   padding: 1rem; /* 안쪽 여백 추가 */
+  height: auto;
+  padding-top: 10%;
 }
 
 .content .main .half:nth-child(2) {
@@ -250,20 +291,185 @@ body {
   margin-left: 20px; /* 첫 번째 자식과의 간격을 늘리기 위한 왼쪽 여백 추가 */
 }
 
+
+
 /* 홀수는 왼쪽에 설명, 오른쪽은 빈 공간 */
-.content.main:nth-child(odd) .half:first-child {
-  order: 1; /* 설명을 왼쪽에 배치 */
+section:nth-child(odd) .content.main .main {
+  display: flex;
+  flex-direction: row;
+}
+section:nth-child(even) .content.main .main {
+  display: flex;
+  flex-direction: row-reverse;
 }
 
-.content.main:nth-child(odd) .half:last-child {
-  order: 2; /* 빈 공간을 오른쪽에 배치 */
+.image {
+  min-width: 50%;
+  width: calc(50vw - 4rem);
+  height: 100%;
+  background-repeat: no-repeat;
 }
 
-/* 짝수는 왼쪽은 빈 공간, 오른쪽은 설명 */
-.content.main:nth-child(even) .half:first-child {
-  order: 2; /* 빈 공간을 왼쪽에 배치 */
+.image.global {
+  background-image: url(./global_rights.png);
+  background-position: right;
+  background-size: 100%;
 }
 
-.content.main:nth-child(even) .half:last-child {
-  order: 1; /* 설명을 오른쪽에 배치 */
+.image.bsi {
+  background-image: url(./BSI.png);
+  background-position: center;
+  background-size: 200px;
+}
+
+.image.iso9001 {
+  background-image: url(./iso-9000.png);
+  background-position: center;
+  background-size: 45vw;
+}
+
+.image.ship {
+  background-image: url(./ships.png);
+  width: calc(50vw - 4rem);
+  background-position: center;
+  background-size: 100%;
+}
+
+.image.esg {
+  background-image: url(./ESGs.png);
+  background-position: center;
+  background-size: 100%;
+}
+
+.image.frost {
+  background-image: url(./frosts.png);
+  background-position: center;
+  background-size: 100%;
+}
+
+.image.factory {
+  background-image: url(./Factory.jpg);
+  background-position: center;
+  background-size: 100%;
+}
+
+.image.food {
+  background-image: url(./foods.png);
+  background-position: center;
+  background-size: 110%;
+}
+
+@media (max-width: 768px) {
+  .content .main {
+    max-width: 100%;
+  }
+
+  .content .main .half {
+    width: 100%; /* 각 반의 너비를 100%로 설정 */
+    margin: 0; /* 추가 마진 제거 */
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  section:nth-child(odd) .content.main .main {
+    display: flex;
+    flex-direction: column; /* 세로 정렬로 변경 */
+  }
+  section:nth-child(even) .content.main .main {
+    display: flex;
+    flex-direction: column; /* 세로 정렬로 변경 */
+  }
+
+  .content .main .half:nth-child(2) {
+    margin-top: 1rem; /* 첫 번째 자식과의 간격을 위해 추가 마진 */
+    display: flex;
+    flex-grow: 1;
+    margin-left: 0; /* 여백 초기화 */
+  }
+  
+  .image {
+    width: 100%;
+    min-height: 100px;
+    display: flex;
+    flex-grow: 1;
+    align-self: center;
+  }
+
+  .image.global {
+    background-image: url(./global_rights.png);
+    background-size: 25rem;
+    background-repeat: no-repeat;
+    align-self: center;
+    width: 100%;
+    height: 100%;
+    flex-grow: 1;
+  }
+  .image.iso9001 {
+    background-position: center;
+    background-size: 100%;
+  }
+  
+  .image.ship {
+    background-image: url(./ships.png);
+    width:80vw;
+    background-size: 100%;
+  }
+  .image.frost {
+    background-image: url(./frosts.png);
+    background-position: top 27% right 41%;
+    background-size: 120%;
+    max-height: 20vh;
+  }
+  .half:has(.image.frost) {
+    display: flex;
+    justify-content: center;
+  }
+  .image.food {
+    background-image: url(./foods.png);
+    background-position: center;
+    background-size: 150%;
+  }
+
+  .contents { /*목차 페이지*/
+    padding: 2.5rem;
+  }
+
+  .contents ul li {
+    padding: 20px;
+  }
+
+  .contents h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.7rem; /* 글씨 크기 증가 */
+  }
+
+  .contents ul li input {
+    background: none;
+    border: none;
+    font-size: 1.1rem; /* 글씨 크기 증가 */
+    font-weight: bold; /* 링크 글자 두껍게 */
+    text-align: left; /*글씨 왼쪽 정렬*/
+    width: 100%; /*여백 채움*/
+  }
+  
+  .contents ul li label {
+    color: #2a3d55; /* 글씨 색상 */
+    font-size: 0.8rem;
+    width: 100%;
+  }
+}
+@media (max-width: 400px) {
+  .content .main {
+    max-width: 100%;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    line-height:100%;
+  }
 }
