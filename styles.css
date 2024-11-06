@@ -278,12 +278,12 @@ strong {
 	background-position-x: 0%;
 }
 
-strong {
+.activatecss strong {
 	background-size: 100% 80%;
-  background-position-y: 100%;
-  background-image: linear-gradient(rgb(212 220 255), rgb(212 220 255));
-  transition: all .5s ease-out;
-  background-repeat: no-repeat;
+	background-position-y: 100%;
+	background-image: linear-gradient(rgb(212 220 255), rgb(212 220 255));
+	transition: all .5s ease-out;
+	background-repeat: no-repeat;
 }
 
 /*본문 페이지*/
