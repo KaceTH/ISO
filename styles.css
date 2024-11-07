@@ -538,6 +538,6 @@ section:nth-child(even) .content.main .main {
 
 @media (max-height: 800px) {
   .content .main .half {
-    padding-top: 2%;
+    padding-top: 2%; 
   }
 }
