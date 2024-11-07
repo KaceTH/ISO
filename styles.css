@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  line-height:150%;
+  line-height:145%;
 }
 
 @font-face {
@@ -280,10 +280,10 @@ strong {
 
 .activatecss strong {
 	background-size: 100% 80%;
-	background-position-y: 100%;
-	background-image: linear-gradient(rgb(212 220 255), rgb(212 220 255));
-	transition: all .5s ease-out;
-	background-repeat: no-repeat;
+  background-position-y: 100%;
+  background-image: linear-gradient(rgb(212 220 255), rgb(212 220 255));
+  transition: all .5s ease-out;
+  background-repeat: no-repeat;
 }
 
 /*본문 페이지*/
@@ -533,5 +533,11 @@ section:nth-child(even) .content.main .main {
     padding: 0;
     box-sizing: border-box;
     line-height:100%;
+  }
+}
+
+@media (max-height: 800px) {
+  .content .main .half {
+    padding-top: 2%;
   }
 }
